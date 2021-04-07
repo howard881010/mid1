@@ -7,13 +7,13 @@ serdev = '/dev/ttyACM0'
 
 s = serial.Serial(serdev)
 
-freq = int(s.readline())
-Fs = 100 * freq;  
+freq = float(s.readline())
+Fs = 240 * freq;  
 Ts = 1.0 / Fs; 
-y = np.arange(0, 1.0 / freq * 2, Ts) 
+y = np.arange(0, 1.0 / freq, Ts) 
 n = len(y)
 k = np.arange(n)
-t = np.arange(0, 1.0 / freq * 2, Ts) 
+t = np.arange(0, 1.0 / freq, Ts) 
 
 T = n/Fs
 frq = k/T 
@@ -33,7 +33,7 @@ ax[0].plot(t,y)
 ax[0].set_xlabel('Time')
 ax[0].set_ylabel('Amplitude')
 ax[1].plot(frq,abs(Y),'r')
-ax[1].set_xlim([0, freq * 8]);
+ax[1].set_xlim([0, freq * 8])
 ax[1].set_xlabel('Freq (Hz)')
 ax[1].set_ylabel('|Y(freq)|')
 plt.show()
