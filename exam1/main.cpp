@@ -73,7 +73,7 @@ int main(){
     //sw3.rise(quene.event(DAC));
 
 	while(1){
-		//if (!mypin) break;
+		if (!mypin) break;
         if (slew == 1) {
             for (int i = 0; i < 80; i++) {
                 sample = (uint16_t)(59578 * i / 80);
@@ -160,7 +160,16 @@ int main(){
     }
     
 
+    
+
+
     for (int i = 0; i < 240; i++) {
-            //printf("%f\r\n", data[i]);
+        data[i] = AIN;
+        wait_us(20000/freq);
+    }
+
+
+    for (int i = 0; i < 240; i++) {
+            printf("%f\r\n", data[i]);
     }
 }
